@@ -1,0 +1,178 @@
+{
+  "version": 1,
+  "author": "Feedback kiosk",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "id": "pico",
+      "type": "wokwi-pi-pico",
+      "top": 80,
+      "left": 0,
+      "attrs": {
+        "env": "micropython-20260406-v1.28.0"
+      }
+    },
+    {
+      "id": "lcd",
+      "type": "wokwi-lcd2004",
+      "top": -130,
+      "left": 180,
+      "attrs": {
+        "pins": "i2c"
+      }
+    },
+    {
+      "id": "uss",
+      "type": "wokwi-hc-sr04",
+      "top": 70,
+      "left": 350,
+      "attrs": {
+        "distance": "20"
+      }
+    },
+    {
+      "id": "green",
+      "type": "wokwi-pushbutton",
+      "top": 250,
+      "left": 260,
+      "attrs": {
+        "color": "green",
+        "label": "yes",
+        "key": "1"
+      }
+    },
+    {
+      "id": "red",
+      "type": "wokwi-pushbutton",
+      "top": 250,
+      "left": 420,
+      "attrs": {
+        "color": "red",
+        "label": "no",
+        "key": "2"
+      }
+    },
+    {
+      "id": "strip",
+      "type": "wokwi-led-strip",
+      "top": -55,
+      "left": 560,
+      "attrs": {
+        "pixels": "8"
+      }
+    },
+    {
+      "id": "buzzer",
+      "type": "wokwi-buzzer",
+      "top": 380,
+      "left": 360,
+      "attrs": {
+        "volume": "0.1"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "pico:GP0",
+      "lcd:SDA",
+      "green",
+      []
+    ],
+    [
+      "pico:GP1",
+      "lcd:SCL",
+      "blue",
+      []
+    ],
+    [
+      "pico:VBUS",
+      "lcd:VCC",
+      "red",
+      []
+    ],
+    [
+      "pico:GND.1",
+      "lcd:GND",
+      "black",
+      []
+    ],
+    [
+      "pico:GP2",
+      "uss:TRIG",
+      "orange",
+      []
+    ],
+    [
+      "pico:GP3",
+      "uss:ECHO",
+      "purple",
+      []
+    ],
+    [
+      "pico:VBUS",
+      "uss:VCC",
+      "red",
+      []
+    ],
+    [
+      "pico:GND.2",
+      "uss:GND",
+      "black",
+      []
+    ],
+    [
+      "pico:GP4",
+      "green:1.l",
+      "green",
+      []
+    ],
+    [
+      "pico:GND.3",
+      "green:2.l",
+      "black",
+      []
+    ],
+    [
+      "pico:GP5",
+      "red:1.l",
+      "red",
+      []
+    ],
+    [
+      "pico:GND.3",
+      "red:2.l",
+      "black",
+      []
+    ],
+    [
+      "pico:GP6",
+      "strip:DIN",
+      "orange",
+      []
+    ],
+    [
+      "pico:VBUS",
+      "strip:VDD",
+      "red",
+      []
+    ],
+    [
+      "pico:GND.4",
+      "strip:VSS",
+      "black",
+      []
+    ],
+    [
+      "pico:GP7",
+      "buzzer:2",
+      "blue",
+      []
+    ],
+    [
+      "pico:GND.4",
+      "buzzer:1",
+      "black",
+      []
+    ]
+  ]
+}
